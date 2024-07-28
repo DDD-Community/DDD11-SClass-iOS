@@ -1,15 +1,18 @@
 //
-//  base.swift
+//  HomeView.swift
 //  OnboardingKit.
 //
-//  Created by {{ author }} on {{ currentDate }}
-//  Copyright © {{ year }} DDD , Ltd., All rights reserved.
+//  Created by SClass on 2024/07/20
+//  Copyright © 2024 DDD , Ltd., All rights reserved.
 //
 
 import SwiftUI
 
-struct BaseView: View {
-  var body: some View {
+public struct HomeView: View {
+  
+  public init() {}
+  
+  public var body: some View {
     VStack {
       Image(systemName: "globe")
         .imageScale(.large)

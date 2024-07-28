@@ -4,12 +4,12 @@ import DependencyPlugin
 import ProjectTemplatePlugin
 
 let project = Project.makeAppModule(
-  name: "{{ layer }}{{ name }}",
-  bundleId: .appBundleID(name: "{{ layer }}.{{ name }}"),
+  name: "FeatureHome",
+  bundleId: .appBundleID(name: "Feature.Home"),
   product: .staticFramework,
   settings: .settings(),
   dependencies: [
-
+    .shared(implements: .thirdPartyLib)
   ],
   sources: ["Sources/**"]
 )

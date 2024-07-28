@@ -2,8 +2,8 @@
 //  base.swift
 //  OnboardingKit.
 //
-//  Created by {{ author }} on {{ currentDate }}
-//  Copyright © {{ year }} DDD , Ltd., All rights reserved.
+//  Created by SClass on 2024/07/20
+//  Copyright © 2024 DDD , Ltd., All rights reserved.
 //
 
 import SwiftUI
