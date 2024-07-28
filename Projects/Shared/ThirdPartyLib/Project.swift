@@ -11,7 +11,8 @@ let project = Project.makeAppModule(
   settings: .settings(),
   dependencies: [
     .SPM.composableArchitecture,
-    .SPM.moya
+    .SPM.moya,
+    .SPM.combineMoya
   ],
   sources: ["Sources/**"]
 )
