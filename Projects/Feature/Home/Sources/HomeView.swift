@@ -37,6 +37,30 @@ public struct HomeView: View {
       CustomProgressBar(progress: 0.66)
       CustomProgressBar(progress: 0.9999999)
       
+      CommonButton(title: "텍스트 내용",
+                   style: .line,
+                   isActive: true,
+                   action: {
+      })
+      
+      CommonButton(title: "텍스트 내용",
+                   style: .default,
+                   isActive: false,
+                   action: {
+      })
+      
+      CommonButton(title: "텍스트 내용",
+                   style: .default,
+                   isActive: true,
+                   action: {
+      })
+      
+      CommonButton(title: "텍스트 내용",
+                   style: .contrast,
+                   isActive: true,
+                   action: {
+      })
+      
       Image(systemName: "globe")
         .imageScale(.large)
         .foregroundColor(.accentColor)
