@@ -38,6 +38,7 @@ public struct LoginStore {
   }
 
   @Dependency(\.socialLogin) private var socialLogin
+  @Dependency(KeychainClient.self) var keychainClient
   
   public var body: some ReducerOf<Self> {
     Reduce { state,action in
@@ -75,7 +76,9 @@ public struct LoginStore {
       case let .loginSuccess(user):
         state.isLoggedIn = true
         state.user = user
-        return .none
+        return .run { [user = user] send in
+          keychainClient.setUserID(user.userID)
+        }
         
       case .loginFailure:
         return .none

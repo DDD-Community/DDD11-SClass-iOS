@@ -50,7 +50,7 @@ public struct SplashStore {
         state.userInfo = userInfo
         return .send(.routeToMainTabScreen)
       case .fetchUser(.failure):
-        return .send(.routeToLoginScreen)
+        return .send(.routeToOnboardingScreen)
       }
     }
   }
@@ -60,7 +60,7 @@ public struct SplashStore {
       return requestFetchUser()
     } else {
       return .send(.routeToLoginScreen)
-    }
+    } 
   }
   
   private func requestFetchUser() -> Effect<Action> {

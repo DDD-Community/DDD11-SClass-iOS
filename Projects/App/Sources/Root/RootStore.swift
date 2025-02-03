@@ -7,6 +7,7 @@
 
 import Foundation
 
+import CoreDomain
 import Feature
 
 import ComposableArchitecture
@@ -24,7 +25,6 @@ public struct RootStore {
       self = .splash(.init())
     }
   }
-  
   
   @Dependency(\.socialLogin) private var socialLogin
   
@@ -45,21 +45,23 @@ public struct RootStore {
       case .splash(.routeToMainTabScreen):
         state = .mainTab(.init(.home))
         return .none
+          
       case let .login(.loginSuccess(user)):
+        debugPrint(user)
         fallthrough
+          
       case .splash(.routeToOnboardingScreen), .login(.routeToOnboardingScreen):
         state = .onboarding(OnboardingRootStore.State())
         return .none
-          
-        
+    
       case .onboarding(.onSuccessSignUp):
         state = .mainTab(.init(.home))
         return .none
       
       case .mainTab(.routeToLoginPage):
-        // TODO: - 로그인 페이지로 이동하도록 변경
-        state = .onboarding(.init())
+        state = .login(.init())
         return .none
+    
       case let .onOpenURL(url):
         socialLogin.handleKakaoUrl(url)
         return .none
