@@ -46,11 +46,7 @@ public struct RootStore {
         state = .mainTab(.init(.home))
         return .none
           
-      case let .login(.loginSuccess(user)):
-        debugPrint(user)
-        fallthrough
-          
-      case .splash(.routeToOnboardingScreen), .login(.routeToOnboardingScreen):
+      case .splash(.routeToOnboardingScreen), .login(.routeToOnboardingScreen), .login(.loginSuccess(_,_)):
         state = .onboarding(OnboardingRootStore.State())
         return .none
     

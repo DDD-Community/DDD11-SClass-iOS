@@ -7,11 +7,14 @@
 
 import Foundation
 
+import CoreDomain
+
 import ComposableArchitecture
 import KeychainAccess
 
 private enum KeychainKey {
   static let userID = "userID"
+  static let socialLoginType = "socialLoginType"
 }
 
 public struct KeychainClient: Sendable {
@@ -43,12 +46,23 @@ extension KeychainClient {
     setString(udid, for: KeychainKey.userID)
   }
   
+  public var socialLoginType: SocialLoginType? {
+    return .init(
+      rawValue: getString(for: KeychainKey.socialLoginType) ?? ""
+    )
+  }
+  
+  public func setSocialLoginType(_ socialLoginType: String) {
+    setString(socialLoginType, for: KeychainKey.socialLoginType)
+  }
+  
   public var isSignIn: Bool {
-    return getString(for: KeychainKey.userID) != nil
+    return getString(for: KeychainKey.userID) != nil && socialLoginType != nil
   }
   
   public func signOut() {
     removeString(for: KeychainKey.userID)
+    removeString(for: KeychainKey.socialLoginType)
   }
 }
 

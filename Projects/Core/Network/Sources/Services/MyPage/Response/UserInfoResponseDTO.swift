@@ -31,6 +31,7 @@ public struct UserInfoResponseDTO: Decodable {
   
   func toDomain() -> UserInfo {
     return .init(
+      socialType: .apple,
       userID: userId,
       nickName: nickname,
       job: JobType(rawValue: job) ?? .developer,

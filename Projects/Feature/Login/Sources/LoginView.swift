@@ -71,5 +71,6 @@ public struct LoginView: View {
           .tint(Color.primary600)
       }
     }
+    .disabled(store.isLoading)
   }
 }

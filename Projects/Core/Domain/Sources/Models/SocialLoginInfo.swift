@@ -10,22 +10,15 @@ import Foundation
 public struct SocialLoginInfo: Equatable {
   public let idToken: String
   public let nonce: String?
-  public let provider: Socialtype
+  public let provider: SocialLoginType
   
   public init(
     idToken: String,
     nonce: String? = nil,
-    provider: Socialtype
+    provider: SocialLoginType
   ) {
     self.idToken = idToken
     self.nonce = nonce
     self.provider = provider
-  }
-}
-
-extension SocialLoginInfo {
-  public enum Socialtype: String {
-    case kakao = "Kakao"
-    case apple = "Apple"
   }
 }

@@ -92,7 +92,7 @@ final class KakaoLogin {
   
   private func setSocialLoginData(idToken: String, nonce: String) {
     UserApi.shared.me { User, Error in
-      print("@@@", User)
+      debugPrint(User)
     }
     let info = SocialLoginInfo(idToken: idToken, nonce: nonce, provider: .kakao)
     continuation?.resume(returning: info)
