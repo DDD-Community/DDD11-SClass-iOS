@@ -97,7 +97,7 @@ public extension InfoPlistDictionary {
     return self.merging(["UISupportedInterfaceOrientations": .array(value.map { .string($0) })]) { (_, new) in new }
   }
   
-  func setLSApplicationQueriesSchemes(_ value: [String] = ["kakaokompassauth", "kakaolink"]) -> InfoPlistDictionary {
+  func setLSApplicationQueriesSchemes(_ value: [String]) -> InfoPlistDictionary {
     return self.merging(["LSApplicationQueriesSchemes": .array(value.map { .string($0) })]) { (_, new) in new }
   }
   

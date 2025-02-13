@@ -33,7 +33,7 @@ let package = Package(
     ),
     .package(
       url: "https://github.com/kakao/kakao-ios-sdk.git",
-      branch: "master"
+      revision: "ab4309c1950550add307046ad1e08024c7514603" // 2.23.0
     )
   ],
   targets: [

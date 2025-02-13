@@ -14,6 +14,7 @@ public enum AppleErrorType: Error {
   case invalidToken
   case invalidAuthorizationCode
   case dismissASAuthorizationController
+  case ASAuthorizationAppleIDCredentialError
 }
 
 final class AppleLogin: NSObject, ASAuthorizationControllerDelegate {
@@ -38,6 +39,9 @@ final class AppleLogin: NSObject, ASAuthorizationControllerDelegate {
   }
   
   func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+    defer {
+      continuation = nil
+    }
     switch authorization.credential {
     case let appleIDCredential as ASAuthorizationAppleIDCredential:
       let email = appleIDCredential.email
@@ -48,7 +52,6 @@ final class AppleLogin: NSObject, ASAuthorizationControllerDelegate {
       guard let tokenData = appleIDCredential.identityToken,
             let token = String(data: tokenData, encoding: .utf8) else {
         continuation?.resume(throwing: AppleErrorType.invalidToken)
-        continuation = nil
         return
       }
       
@@ -57,7 +60,6 @@ final class AppleLogin: NSObject, ASAuthorizationControllerDelegate {
       guard let authorizationCode = appleIDCredential.authorizationCode,
             let authorizationCodeString = String(data: authorizationCode, encoding: .utf8) else {
           continuation?.resume(throwing: AppleErrorType.invalidAuthorizationCode)
-          continuation = nil
           return
       }
       
@@ -69,10 +71,9 @@ final class AppleLogin: NSObject, ASAuthorizationControllerDelegate {
       let info = SocialLoginInfo(idToken: token, provider: .apple)
         
       continuation?.resume(returning: info)
-      continuation = nil
       
     default:
-      break
+      continuation?.resume(throwing: AppleErrorType.ASAuthorizationAppleIDCredentialError)
     }
   }
   
