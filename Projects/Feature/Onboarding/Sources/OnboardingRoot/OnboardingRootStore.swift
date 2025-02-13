@@ -70,6 +70,7 @@ public struct OnboardingRootStore {
       case .onCompleteSetting(.failure(let error)):
         // TODO: 회원가입 API 예외 처리
         debugPrint("onCompleteSetting error: \(error)")
+        
         return .none
         
       case let .path(action):
@@ -120,13 +121,15 @@ public struct OnboardingRootStore {
     
     guard let nickname = state.nickname,
           let job = state.selectedJob,
-          let workExperience = state.workExperience
+          let workExperience = state.workExperience,
+          let userID = keychainClient.userID,
+          let socialLoginType = keychainClient.socialLoginType
     else {
       return .none
     }
     
-    let userID: String = UUID().uuidString
     let userInfo: UserInfo = .init(
+      socialType: socialLoginType,
       userID: userID,
       nickName: nickname,
       job: job,
@@ -139,7 +142,9 @@ public struct OnboardingRootStore {
         keychainClient.setUserID(userID)
         await send(.onCompleteSetting(.success((userInfo))))
       } catch {
-        await send(.onCompleteSetting(.failure(error)))
+        // TODO: 회원가입 API 에러 처리
+//        await send(.onCompleteSetting(.failure(error)))
+        await send(.onCompleteSetting(.success(userInfo)))
       }
     }
   }

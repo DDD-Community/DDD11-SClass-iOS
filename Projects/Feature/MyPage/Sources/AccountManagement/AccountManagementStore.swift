@@ -56,8 +56,9 @@ public struct AccountManagementStore {
     @Presents var sheet: ConfirmationSheetStore.State?
     var presentedSheet: SheetType?
     
-    // TODO: - 연동된 SNS 추가
-    var linkedSocialPlatform: String = "Apple"
+    var linkedSocialPlatform: String {
+      (userInfo?.socialType ?? .apple).rawValue
+    }
   }
   
   public enum Action {

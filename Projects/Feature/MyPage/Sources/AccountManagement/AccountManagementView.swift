@@ -51,7 +51,6 @@ public struct AccountManagementView: View {
       
       Spacer()
       
-      // TODO: - 연동계정 표시
       Text(store.linkedSocialPlatform)
         .notoSans(.body_2)
         .foregroundStyle(.greyScale500)
