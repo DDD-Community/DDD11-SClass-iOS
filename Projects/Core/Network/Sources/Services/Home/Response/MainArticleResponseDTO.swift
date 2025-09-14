@@ -24,7 +24,7 @@ public struct MainArticleResponseDTO: Decodable {
       title: title,
       category: categoryName ?? "",
       source: source,
-      postDate: ISO8601DateFormatter().date(from: postDate) ?? .init(),
+      postDate: postDate.toDate(with: .longForm) ?? .init(),
       thumbnailURL: thumbnail,
       url: url
     )

@@ -8,6 +8,7 @@
 import Foundation
 
 import CoreDomain
+import SharedUtils
 
 typealias ArticlesResponseDTO = [ArticleResponseDTO]
 
@@ -31,7 +32,7 @@ extension ArticleResponseDTO {
       id: id,
       categoryId: categoryId,
       subcategoryId: subcategoryId,
-      postDate: ISO8601DateFormatter().date(from: postDate) ?? Date(),
+      postDate: postDate.toDate(with: .longForm) ?? Date(),
       source: source,
       title: title,
       summary: summary,

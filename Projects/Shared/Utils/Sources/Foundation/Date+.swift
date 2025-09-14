@@ -16,7 +16,7 @@ public extension Date {
   }
 }
 
-public extension DateFormatter {
+public extension Formatter {
   /// 한국어 로케일을 사용하여 날짜를 "년. 월. 일" 형식으로 포맷팅하는 DateFormatter
   ///
   /// - 날짜 스타일: .short (연, 월, 일)
@@ -53,6 +53,29 @@ public extension DateFormatter {
     let formatter = DateFormatter()
     formatter.locale = Locale(identifier: "ko_KR")
     formatter.dateFormat = "yyyy-MM-dd"
+    return formatter
+  }()
+
+  static let longForm: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.locale = Locale(identifier: "en_US_POSIX")
+    formatter.timeZone = TimeZone(secondsFromGMT: 0)
+    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+    return formatter
+  }()
+
+  static let longFormWithMicroseconds: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.locale = Locale(identifier: "en_US_POSIX")
+    formatter.timeZone = TimeZone(secondsFromGMT: 0)
+    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS"
+    return formatter
+  }()
+
+  static let relative: RelativeDateTimeFormatter = {
+    let formatter = RelativeDateTimeFormatter()
+    formatter.unitsStyle = .full
+    formatter.locale = Locale(identifier: "en_US")
     return formatter
   }()
 }
