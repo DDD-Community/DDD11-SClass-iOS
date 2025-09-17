@@ -19,6 +19,7 @@ extension InfoPlist {
       .setCFBundleIdentifier("$(PRODUCT_BUNDLE_IDENTIFIER)")
       .setCFBundleInfoDictionaryVersion("6.0")
       .setCFBundleName("$(PRODUCT_NAME)")
+      .setCFBundleDisplayName("$(CFBundleDisplayName)")
       .setCFBundlePackageType("APPL")
       .setCFBundleShortVersionString(Project.Environment.appVersion)
       .setCFBundleVersion(Project.Environment.appVersion)
@@ -41,9 +42,9 @@ extension InfoPlist {
       .setCustomValue("KAKAO_NATIVE_APP_KEY", "$(KAKAO_NATIVE_APP_KEY)")
       .setCFBundleURLTypes("kakao$(KAKAO_NATIVE_APP_KEY)")
       .setLSApplicationQueriesSchemes(["kakaokompassauth", "kakaolink"]) // kakao
-    
+      .setAppUsesNonExemptEncryption(false)
   )
-  
+
   public static let networkInfoPlist: Self = .extendingDefault(
     with: InfoPlistDictionary()
       .setCustomValue("baseURL", "$(BASE_URL)")

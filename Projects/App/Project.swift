@@ -12,7 +12,7 @@ import DependencyPlugin
 
 let project = Project.makeModule(
     name: Project.Environment.appName,
-    bundleId: .mainBundleID,
+    bundleId: Project.Environment.mainBundleId,
     product: .app,
     settings: .appMainSetting,
     scripts: [],

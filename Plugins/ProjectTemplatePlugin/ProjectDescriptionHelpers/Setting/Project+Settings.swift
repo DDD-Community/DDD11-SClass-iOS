@@ -25,11 +25,11 @@ extension Settings {
       .setDebugInformationFormat("non-global")
       .setProvisioningProfileSpecifier(provisioningProfile)
   }
-  
+
   public static let appMainSetting: Settings = .settings(
     base: SettingsDictionary()
       .setProductName(Project.Environment.appName)
-      .setCFBundleDisplayName(Project.Environment.appName)
+      .setCFBundleDisplayName(Project.Environment.displayName)
       .setMarketingVersion(.appVersion(version: Project.Environment.appVersion))
       .setASAuthenticationServicesEnabled()
       .setPushNotificationsEnabled()
@@ -40,16 +40,14 @@ extension Settings {
       .setCodeSignIdentity()
       .setCodeSignStyle()
       .setVersioningSystem()
-      .setProvisioningProfileSpecifier("match AppStore com.DDD.onboarding-kit")
       .setDevelopmentTeam(Project.Environment.organizationTeamId)
-      .setSkipInstall(true)
       .setDebugInformationFormat(),
     configurations: [
       .debug(
         name: .debug,
         settings: commonSettings(
           appName: Project.Environment.appDevName,
-          displayName: Project.Environment.appDevName,
+          displayName: Project.Environment.displayName,
           provisioningProfile: "match Development com.DDD.onboarding-kit"
         ),
         xcconfig: "Resources/Config.xcconfig"
@@ -58,7 +56,7 @@ extension Settings {
         name: .qa,
         settings: commonSettings(
           appName: Project.Environment.appDemoName,
-          displayName: Project.Environment.appDemoName,
+          displayName: Project.Environment.displayName,
           provisioningProfile: "match AppStore com.DDD.onboarding-kit"
         ),
         xcconfig: "Resources/Config.xcconfig"
@@ -67,7 +65,7 @@ extension Settings {
         name: .release,
         settings: commonSettings(
           appName: Project.Environment.appName,
-          displayName: Project.Environment.appName,
+          displayName: Project.Environment.displayName,
           provisioningProfile: "match AppStore com.DDD.onboarding-kit"
         ),
         xcconfig: "Resources/Config.xcconfig"

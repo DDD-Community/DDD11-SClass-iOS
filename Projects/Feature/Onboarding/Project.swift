@@ -5,7 +5,7 @@ import ProjectTemplatePlugin
 
 let project = Project.makeAppModule(
   name: "FeatureOnboarding",
-  bundleId: .appBundleID(name: "Feature.Onboarding"),
+  bundleId: .bundleId(name: "Feature.Onboarding"),
   product: .staticFramework,
   settings: .settings(),
   dependencies: [

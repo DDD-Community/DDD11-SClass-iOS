@@ -5,7 +5,7 @@ import ProjectTemplatePlugin
 
 let project = Project.makeAppModule(
   name: "FeatureHistory",
-  bundleId: .appBundleID(name: "Feature.History"),
+  bundleId: .bundleId(name: "Feature.History"),
   product: .staticFramework,
   settings: .settings(),
   dependencies: [

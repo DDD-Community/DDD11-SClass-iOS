@@ -5,7 +5,7 @@ import ProjectTemplatePlugin
 
 let project = Project.makeAppModule(
   name: "CoreDomain",
-  bundleId: .appBundleID(name: "Core.Domain"),
+  bundleId: .bundleId(name: "Core.Domain"),
   product: .staticFramework,
   settings: .settings(),
   dependencies: [

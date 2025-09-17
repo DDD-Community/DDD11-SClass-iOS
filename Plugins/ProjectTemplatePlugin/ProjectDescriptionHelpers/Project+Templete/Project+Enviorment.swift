@@ -9,6 +9,7 @@ import ProjectDescription
 
 public extension Project {
   enum Environment {
+    public static let displayName = "신입키트"
     public static let appName = "OnboardingKit"
     public static let appDemoName = "OnboardingKit-Demo"
     public static let appDevName = "OnboardingKit-Dev"

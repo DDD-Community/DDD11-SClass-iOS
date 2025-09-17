@@ -13,15 +13,9 @@ extension String {
     return version
   }
   
-  public static var mainBundleID: String {
-    return Project.Environment.bundlePrefix
-  }
-  
   public static func appBuildVersion(buildVersion: String = "1") -> String {
     return buildVersion
   }
-  
-  public static func appBundleID(name: String) -> String {
     return "\(Project.Environment.bundlePrefix)\(name)"
   }
 }

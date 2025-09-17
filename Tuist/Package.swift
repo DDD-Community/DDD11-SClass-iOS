@@ -8,7 +8,7 @@ import ProjectDescription
 
 #endif
 
-let package = Package(
+@MainActor let package = Package(
   name: "OnboardingKit",
   dependencies: [
     .package(

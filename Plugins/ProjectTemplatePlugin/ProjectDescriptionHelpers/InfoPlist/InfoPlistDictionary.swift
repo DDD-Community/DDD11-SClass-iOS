@@ -38,7 +38,11 @@ public extension InfoPlistDictionary {
   func setCFBundleName(_ value: String) -> InfoPlistDictionary {
     return self.merging(["CFBundleName": .string(value)]) { (_, new) in new }
   }
-  
+
+  func setCFBundleDisplayName(_ value: String) -> InfoPlistDictionary {
+    return self.merging(["CFBundleDisplayName": .string(value)]) { (_, new) in new }
+  }
+
   func setAppTransportSecurity(arbitaryLoad: Bool) -> [String: Plist.Value] {
        return [
            "NSAppTransportSecurity": .dictionary([
@@ -107,7 +111,11 @@ public extension InfoPlistDictionary {
       "CFBundleURLSchemes": .array([.string(value)])
   ])])]) { (_, new) in new }
   }
-  
+
+  func setAppUsesNonExemptEncryption(_ value: Bool) -> InfoPlistDictionary {
+    return self.merging(["ITSAppUsesNonExemptEncryption": .boolean(value)]) { (_, new) in new }
+  }
+
   func setCustomValue(_ key: String, _ value: String) -> InfoPlistDictionary {
     return self.merging([key: .string(value)]) { (_, new) in new }
   }

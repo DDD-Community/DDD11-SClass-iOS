@@ -1,3 +1,3 @@
 import ProjectDescription
 
-let plugin = Plugin(name: "DependencyPackagePlugin")
+@MainActor let plugin = Plugin(name: "DependencyPackagePlugin")
