@@ -7,7 +7,7 @@ let project = Project.makeAppModule(
   name: "FeatureHome",
   bundleId: .bundleId(name: "Feature.Home"),
   product: .staticFramework,
-  settings: .settings(),
+  settings: .moduleSettings,
   dependencies: [
     .core
   ],

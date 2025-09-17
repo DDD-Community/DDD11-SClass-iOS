@@ -7,7 +7,7 @@ let project = Project.makeModule(
   name: "SharedDesignSystem",
   bundleId: .bundleId(name: "Shared.DesignSystem"),
   product: .staticFramework,
-  settings: .settings(),
+  settings: .moduleSettings,
   dependencies: [
     .shared(implements: .thirdPartyLib)
   ],

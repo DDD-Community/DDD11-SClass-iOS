@@ -8,7 +8,7 @@ let project = Project.makeModule(
   name: "SharedThirdPartyLib",
   bundleId: .bundleId(name: "Shared.ThirdPartyLib"),
   product: .staticFramework,
-  settings: .settings(),
+  settings: .moduleSettings,
   dependencies: [
     .SPM.composableArchitecture,
     .SPM.moya,

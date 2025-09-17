@@ -7,7 +7,7 @@ let project = Project.makeAppModule(
   name: "FeatureOnboarding",
   bundleId: .bundleId(name: "Feature.Onboarding"),
   product: .staticFramework,
-  settings: .settings(),
+  settings: .moduleSettings,
   dependencies: [
     .core
   ],

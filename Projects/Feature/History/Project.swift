@@ -7,7 +7,7 @@ let project = Project.makeAppModule(
   name: "FeatureHistory",
   bundleId: .bundleId(name: "Feature.History"),
   product: .staticFramework,
-  settings: .settings(),
+  settings: .moduleSettings,
   dependencies: [
     .core
   ],

@@ -7,7 +7,7 @@ let project = Project.makeAppModule(
   name: "CoreDomain",
   bundleId: .bundleId(name: "Core.Domain"),
   product: .staticFramework,
-  settings: .settings(),
+  settings: .moduleSettings,
   dependencies: [
     
   ],

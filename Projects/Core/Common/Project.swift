@@ -7,7 +7,7 @@ let project = Project.makeModule(
   name: "CoreCommon",
   bundleId: .bundleId(name: "Core.Common"),
   product: .staticFramework,
-  settings: .settings(),
+  settings: .moduleSettings,
   dependencies: [
     .shared
   ],

@@ -73,4 +73,12 @@ extension Settings {
     ],
     defaultSettings: .recommended
   )
+
+  public static let moduleSettings: Settings = .settings(
+    configurations: [
+      .debug(name: .debug),
+      .debug(name: .qa),
+      .release(name: .release)
+    ]
+  )
 }

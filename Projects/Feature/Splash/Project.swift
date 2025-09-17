@@ -7,7 +7,7 @@ let project = Project.makeAppModule(
   name: "FeatureSplash",
   bundleId: .bundleId(name: "Feature.Splash"),
   product: .staticFramework,
-  settings: .settings(),
+  settings: .moduleSettings,
   dependencies: [
     .core
   ],
