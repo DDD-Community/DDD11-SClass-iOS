@@ -21,8 +21,8 @@ extension InfoPlist {
       .setCFBundleName("$(PRODUCT_NAME)")
       .setCFBundleDisplayName("$(CFBundleDisplayName)")
       .setCFBundlePackageType("APPL")
-      .setCFBundleShortVersionString(Project.Environment.appVersion)
-      .setCFBundleVersion(Project.Environment.appVersion)
+      .setCFBundleShortVersionString("$(MARKETING_VERSION)")
+      .setCFBundleVersion("$(CURRENT_PROJECT_VERSION)")
       .setLSRequiresIPhoneOS(true)
       .setUIApplicationSceneManifest([
         "UIApplicationSupportsMultipleScenes": true,
