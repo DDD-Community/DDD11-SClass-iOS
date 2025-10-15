@@ -77,7 +77,7 @@ public struct LoginStore {
               }
             },
             catch: { error, send in
-              debugPrint(error)        
+//              debugPrint(error)        
               await send(.setLoading(false))
               await send(.loginFailure(error))
             }
