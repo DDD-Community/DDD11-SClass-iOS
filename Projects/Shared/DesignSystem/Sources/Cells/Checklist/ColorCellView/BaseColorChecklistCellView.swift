@@ -8,26 +8,44 @@
 import SwiftUI
 
 enum ColorChecklistCellType {
-  case `default`
-  case detail
+  case `default`(ChecklistColorType)
+  case detail(ChecklistColorType)
 }
 
 private extension ColorChecklistCellType {
   var defaultBackgroundColor: Color {
     switch self {
-    case .default:
-      return .primary050
+    case .default(let color):
+      return color.checklistColor
     case .detail:
       return .greyScale0
     }
   }
   
+  var defaultTintColor: Color {
+    switch self {
+    case .default(let color):
+      return color.checklistTintColor
+    case .detail(let color):
+      return color.checklistTintColor
+    }
+  }
+  
   var selectedBackgroundColor: Color {
     switch self {
-    case .default:
-      return .primary100
+    case .default(let color):
+      return color.checklistSelectedColor
     case .detail:
       return .greyScale050
+    }
+  }
+  
+  var selectedTintColor: Color {
+    switch self {
+    case .default(let color):
+      return color.checklistSelectedTintColor
+    case .detail(let color):
+      return color.checklistSelectedTintColor
     }
   }
 }
@@ -55,7 +73,7 @@ struct BaseColorChecklistCellView: View {
       HStack(spacing: 12) {
         Rectangle()
           .frame(width: 4)
-          .foregroundStyle(!isSelected ? .primary500 : .clear)
+          .foregroundStyle(!isSelected ? type.defaultTintColor : .clear)
         
         Text(title)
           .notoSans(.body_long_1)
@@ -65,7 +83,8 @@ struct BaseColorChecklistCellView: View {
         
         ColorCheckBoxButton(
           isSelected: isSelected,
-          onToggle: onToggle
+          onToggle: onToggle,
+          tintColor: type.selectedTintColor
         )
       }
     }
@@ -81,10 +100,12 @@ struct BaseColorChecklistCellView: View {
 private struct ColorCheckBoxButton: View {
   private let isSelected: Bool
   private let onToggle: () -> ()
+  private let tintColor: Color
   
-  init(isSelected: Bool, onToggle: @escaping () -> ()) {
+  init(isSelected: Bool, onToggle: @escaping () -> (), tintColor: Color) {
     self.isSelected = isSelected
     self.onToggle = onToggle
+    self.tintColor = tintColor
   }
   
   var body: some View {
@@ -101,7 +122,7 @@ private struct ColorCheckBoxButton: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 20, height: 20)
-                .foregroundStyle(.primary900)
+                .foregroundStyle(tintColor)
             }
         }
         .if(!isSelected) {

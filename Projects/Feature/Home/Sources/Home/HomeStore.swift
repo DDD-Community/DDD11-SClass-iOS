@@ -83,7 +83,7 @@ public struct HomeStore {
 
     // MARK: - Delegate Actions(parent)
 
-    case onNaviagteToDetailChecklist(card: Card)
+    case onNaviagteToDetailChecklist(card: Card, index: Int)
     case onRouteToHistoryScreen
 
     // MARK: - Scope Actions(child)
@@ -141,7 +141,9 @@ public struct HomeStore {
         return .none
 
       case .didTapNavigateToDetailChecklist(let card):
-        return .send(.onNaviagteToDetailChecklist(card: card))
+        guard let index = state.cards.firstIndex(of: card)
+        else { return .none }
+        return .send(.onNaviagteToDetailChecklist(card: card, index: index))
 
       case .fetchData:
         return .run { send in

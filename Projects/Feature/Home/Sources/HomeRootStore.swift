@@ -37,7 +37,7 @@ public struct HomeRootStore {
     
     // MARK: - Navigation
     
-    case navigateToDetailChecklist(card: Card)
+    case navigateToDetailChecklist(card: Card, index: Int)
   }
   
   @Reducer
@@ -61,8 +61,8 @@ public struct HomeRootStore {
         case .onPresentChat:
           return .send(.onPresentChat)
           
-        case .onNaviagteToDetailChecklist(let card):
-          return .send(.navigateToDetailChecklist(card: card))
+        case .onNaviagteToDetailChecklist(let card, let index):
+          return .send(.navigateToDetailChecklist(card: card, index: index))
         
         default:
           return .none
@@ -71,8 +71,8 @@ public struct HomeRootStore {
       case .onAppendChecklist(let checklist):
         return .send(.home(.onAppendNewChecklist(checklist: checklist)))
         
-      case .navigateToDetailChecklist(let card):
-        state.path.append(.detailChecklist(.init(card: card)))
+      case .navigateToDetailChecklist(let card, let index):
+        state.path.append(.detailChecklist(.init(index: index, card: card)))
         return .none
         
       default:

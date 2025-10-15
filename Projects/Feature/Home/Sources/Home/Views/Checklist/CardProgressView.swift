@@ -7,14 +7,19 @@
 
 import SwiftUI
 
+import SharedDesignSystem
+
 struct CardProgressView: View {
   private let progress: CGFloat
   private let isSelected: Bool
+  private let colorType: ChecklistColorType
 
   init(
+    colorType: ChecklistColorType,
     isSelected: Bool,
     progress: CGFloat
   ) {
+    self.colorType = colorType
     self.isSelected = isSelected
     self.progress = progress
   }
@@ -29,7 +34,7 @@ struct CardProgressView: View {
         Circle()
           .trim(from: 0, to: progress)
           .stroke(
-            isSelected ? .primary800 : .greyScale400,
+            isSelected ? colorType.cardTintColor : .greyScale400,
             style: StrokeStyle(lineWidth: 8, lineCap: .butt, lineJoin: .bevel)
           )
           .rotationEffect(.degrees(-90))
@@ -42,7 +47,7 @@ struct CardProgressView: View {
           Text("%")
             .notoSans(.subhead_2)
         }
-        .foregroundStyle(isSelected ? .primary800 : .greyScale400)
+        .foregroundStyle(isSelected ? colorType.cardTintColor : .greyScale400)
       }
     }
   }

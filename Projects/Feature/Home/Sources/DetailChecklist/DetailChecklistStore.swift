@@ -17,6 +17,7 @@ public struct DetailChecklistStore {
   
   @ObservableState
   public struct State {
+    var index: Int
     var card: Card
     var isPresentDeleteCheckBoxAlert: Bool = false
     var willDeleteCheckBox: CheckBox?

@@ -14,9 +14,11 @@ import ComposableArchitecture
 
 struct DetailChecklistView: View {
   @Bindable private var store: StoreOf<DetailChecklistStore>
+  private let colorType: ChecklistColorType
   
   init(store: StoreOf<DetailChecklistStore>) {
     self.store = store
+    self.colorType = ChecklistColorType(index: store.index)
   }
   
   var body: some View {
@@ -48,6 +50,7 @@ struct DetailChecklistView: View {
             DetailColorChecklistCellView(
               title: checkBox.label,
               isSelected: checkBox.isCompleted,
+              colorType: colorType,
               onToggle: {
                 store.send(.didTapChecklistCompleteButton(checkBox: checkBox))
               },
