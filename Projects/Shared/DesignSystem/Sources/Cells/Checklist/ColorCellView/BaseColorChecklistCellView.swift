@@ -110,7 +110,7 @@ private struct ColorCheckBoxButton: View {
             .clipShape(RoundedRectangle(cornerRadius: 2))
             .overlay(
               RoundedRectangle(cornerRadius: 2)
-                .stroke(.greyScale100, lineWidth: 1)
+                .stroke(.greyScale300, lineWidth: 1)
             )
             .padding(3)
         }
