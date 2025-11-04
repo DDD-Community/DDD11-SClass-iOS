@@ -11,6 +11,7 @@ import CoreDomain
 
 import ComposableArchitecture
 
+@DependencyClient
 public struct ArticleAPIClient: Sendable {
   @DependencyEndpoint
   public var fetchArticles: @Sendable (_ request: ArticleSearchRequest) async throws -> [Article]

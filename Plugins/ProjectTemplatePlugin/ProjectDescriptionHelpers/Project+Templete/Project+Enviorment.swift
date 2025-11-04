@@ -18,7 +18,7 @@ public extension Project {
     public static let organizationTeamId = "H89XC7VZRC"
     public static let bundlePrefix = "com.DDD.onboarding-kit"
     public static let appVersion = "0.1.0"
-    public static let buildNumber = "1"
+    public static let buildNumber = "2"
     public static let mainBundleId = "com.DDD.onboarding-kit"
   }
 }
