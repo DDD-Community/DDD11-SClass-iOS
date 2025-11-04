@@ -13,16 +13,19 @@ public struct DetailColorChecklistCellView: View {
   private let onToggle: () -> Void
   private let onEdit: (() -> Void)?
   private let onDelete: () -> Void
+  private let colorType: ChecklistColorType
   
   public init(
     title: String,
     isSelected: Bool,
+    colorType: ChecklistColorType = .blue,
     onToggle: @escaping () -> Void,
 		onEdit: (() -> Void)? = nil,
     onDelete: @escaping () -> Void
   ) {
     self.title = title
     self.isSelected = isSelected
+    self.colorType = colorType
     self.onToggle = onToggle
 	  self.onEdit = onEdit
     self.onDelete = onDelete
@@ -32,7 +35,7 @@ public struct DetailColorChecklistCellView: View {
     BaseColorChecklistCellView(
       title: title,
       isSelected: isSelected,
-      type: .detail,
+      type: .detail(colorType),
       onToggle: onToggle
     )
     .listRowBackground(Color.clear)

@@ -14,10 +14,18 @@ import ComposableArchitecture
 struct ChecklistList: View {
   @Bindable private var store: StoreOf<HomeStore>
   private let width: CGFloat
+  private let colorType: ChecklistColorType
 
   init(store: StoreOf<HomeStore>, width: CGFloat) {
     self.store = store
     self.width = width
+    
+    if let selected = store.selectedCard,
+       let index = store.cards.firstIndex(of: selected) {
+      self.colorType = ChecklistColorType(index: index)
+    } else {
+      self.colorType = .blue
+    }
   }
 
   var body: some View {
@@ -43,7 +51,8 @@ struct ChecklistList: View {
                   isSelected: checkBox.isCompleted,
                   onToggle: {
                     store.send(.didTapChecklistCompleteButton(checkBox: checkBox))
-                  }
+                  },
+                  colorType: colorType
                 )
               }
             }

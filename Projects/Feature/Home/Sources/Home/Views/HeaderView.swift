@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+import SharedDesignSystem
+
 import ComposableArchitecture
 
 struct HeaderView: View {
@@ -85,8 +87,11 @@ struct HeaderView: View {
 
       ScrollView(.horizontal, showsIndicators: false) {
         HStack(spacing: 8) {
-          ForEach(store.cards) { card in
+          ForEach(0..<store.cards.count) { i in
+            let card = store.cards[i]
+            let colorType: ChecklistColorType = .init(index: i)
             CardView(
+              colorType: colorType,
               title: card.title,
               isSelected: store.selectedCard == card,
               progress: card.progress,

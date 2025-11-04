@@ -26,7 +26,12 @@ public struct HistoryView: View {
     NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
       VStack {
         TopNavigation(centerTitle: "나의 기록")
-        content
+          
+        if store.state.checkList.isEmpty {
+          emptyView
+        } else {
+          content
+        }
       }
       .onAppear {
         store.send(.onAppear)
@@ -89,10 +94,14 @@ public struct HistoryView: View {
   }
   
   private var emptyView: some View {
-    Image.historyEmptyView
-      .resizable()
-      .scaledToFit()
-      .frame(width: 192, height: 186)
+    VStack {
+      Spacer()
+      Image.historyEmptyView
+        .resizable()
+        .scaledToFit()
+        .frame(width: 192, height: 186)
+      Spacer()
+    }
   }
   
   @ViewBuilder
