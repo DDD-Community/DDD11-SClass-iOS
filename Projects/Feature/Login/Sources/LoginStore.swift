@@ -68,13 +68,9 @@ public struct LoginStore {
       case .didTapKakaoLogin:
           return .run(
             operation: { send in
-              if (UserApi.isKakaoTalkLoginAvailable()) {
                 await send(.setLoading(true))
                 let info = try await socialLogin.kakaoLogin()
                 await send(.loginServer(info))
-              } else {
-                throw NSError()
-              }
             },
             catch: { error, send in
 //              debugPrint(error)        
